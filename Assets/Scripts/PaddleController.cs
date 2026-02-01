@@ -10,6 +10,8 @@ public class PaddleController : MonoBehaviour
     public int playerId;
     //speed at which the paddle moves
     public float speed = 1f;
+    private float maxZ = 3.5f;
+    private float minZ = -3.5f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,14 +28,16 @@ public class PaddleController : MonoBehaviour
             if (Keyboard.current.wKey.isPressed)
             {
                 //moves forwards
-                Vector3 movement = new Vector3(0, 0, speed)*Time.deltaTime;
-                this.transform.Translate(movement);
+                Vector3 movement = transform.position + new Vector3(0, 0, speed)*Time.deltaTime;
+                movement.z = Mathf.Clamp(movement.z, minZ, maxZ);
+                transform.position = movement;
             }
             else if (Keyboard.current.sKey.isPressed)
             {
                 //moves backwards
-                Vector3 movement = new Vector3(0, 0, -speed)*Time.deltaTime;
-                this.transform.Translate(movement);
+                Vector3 movement = transform.position + new Vector3(0, 0, -speed)*Time.deltaTime;
+                movement.z = Mathf.Clamp(movement.z, minZ, maxZ);
+                transform.position = movement;
             }
         }
         else if (playerId == 2)
@@ -42,14 +46,16 @@ public class PaddleController : MonoBehaviour
             if (Keyboard.current.upArrowKey.isPressed)
             {
                 //moves forwards
-                Vector3 movement = new Vector3(0, 0, speed)*Time.deltaTime;
-                this.transform.Translate(movement);
+                Vector3 movement = transform.position + new Vector3(0, 0, speed)*Time.deltaTime;
+                movement.z = Mathf.Clamp(movement.z, minZ, maxZ);
+                transform.position = movement;
             }
             else if (Keyboard.current.downArrowKey.isPressed)
             {
                 //moves backwards
-                Vector3 movement = new Vector3(0, 0, -speed)*Time.deltaTime;
-                this.transform.Translate(movement);
+                Vector3 movement = transform.position + new Vector3(0, 0, -speed)*Time.deltaTime;
+                movement.z = Mathf.Clamp(movement.z, minZ, maxZ);
+                transform.position = movement;
             }
         }
         
