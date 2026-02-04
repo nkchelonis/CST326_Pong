@@ -8,10 +8,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Start()
     {
         var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
-        player1.transform.position = new Vector3(-10, 0, 0);
+        player1.transform.position = new Vector3(-10, -.1f, 0);
         
         var player2 =  PlayerInput.Instantiate(playerPrefab, controlScheme: "ARROWS",  pairWithDevice: Keyboard.current);
-        player2.transform.position = new Vector3(10, 0, 0);
+        player2.transform.position = new Vector3(10, -.1f, 0);
     }
     
 

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(0, 0, moveDirection.x);
         move *= speed;
         move.z = Mathf.Clamp(move.z, minZ, maxZ);
+        move.y = Mathf.Clamp(move.y, -.1f, .1f);
         characterController.Move(move * Time.deltaTime);
     }
 
