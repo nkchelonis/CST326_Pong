@@ -9,6 +9,8 @@ TagManager:
   - Bottom Wall
   - P1Goal
   - P2Goal
+  - SpeedPower
+  - SizePower
   layers:
   - Default
   - TransparentFX

@@ -5,13 +5,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     //[SerializeField] private Transform[] spawnPoint;
+    public Material p1Material;
+    public Material p2Material;
     void Start()
     {
+        playerPrefab.GetComponent<MeshRenderer>().material = p1Material;
         var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "WASD", pairWithDevice: Keyboard.current);
         player1.transform.position = new Vector3(-10, -.1f, 0);
-        
+
+        playerPrefab.GetComponent<MeshRenderer>().material = p2Material;
         var player2 =  PlayerInput.Instantiate(playerPrefab, controlScheme: "ARROWS",  pairWithDevice: Keyboard.current);
         player2.transform.position = new Vector3(10, -.1f, 0);
+        
     }
     
 

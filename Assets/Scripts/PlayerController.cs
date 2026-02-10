@@ -7,9 +7,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private Vector2 moveDirection;
     
-    private float maxZ = 3.5f;
-    private float minZ = -3.5f;
-    public float speed = 10;
+    
+    private float maxSpeed = 10;
 
     void Awake()
     {
@@ -27,12 +26,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 move = new Vector3(0, 0, moveDirection.x);
-        move *= speed;
-        move.z = Mathf.Clamp(move.z, minZ, maxZ);
+        move *= maxSpeed;
         move.y = Mathf.Clamp(move.y, -.1f, .1f);
         characterController.Move(move * Time.deltaTime);
     }
 
-    
+    void OnTriggerEnter(Collider other)
+    {
+        
+    }
     
 }

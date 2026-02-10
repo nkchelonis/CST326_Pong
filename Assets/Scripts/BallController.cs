@@ -1,4 +1,8 @@
+using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BallController : MonoBehaviour
 {
@@ -9,11 +13,20 @@ public class BallController : MonoBehaviour
     public float zMove = 5f;
     private int p1Score = 0;
     private int p2Score = 0;
+    public AudioClip pop1;
+    public AudioClip pop2;
+    public AudioClip pop3;
+    private AudioSource audioSource;
+
+    public TextMeshProUGUI scoreBoard;
+    public TextMeshProUGUI winText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        winText.enabled = false;
     }
 
     // Update is called once per frame
@@ -38,6 +51,36 @@ public class BallController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerOneBall *= -1;
+            
+            //play sound
+            int popDecision = Random.Range(1, 3);
+            if (Math.Abs(xMove) < 10)
+            {
+                if (popDecision == 1)
+                {
+                    audioSource.PlayOneShot(pop1);
+                }
+                else if (popDecision == 2)
+                {
+                    //lowest pitch pop
+                    audioSource.PlayOneShot(pop2);
+                }
+            }
+            else
+            {
+                //pitch options are the higher two at faster speed 
+                if (popDecision == 1)
+                {
+                    audioSource.PlayOneShot(pop1);
+                }
+                else if (popDecision == 2)
+                {
+                    audioSource.PlayOneShot(pop3);
+                }
+            }
+            
+            
+            //increase speed
             if (xMove > 0)
             {
                 xMove += 1;
@@ -66,35 +109,62 @@ public class BallController : MonoBehaviour
         if (other.CompareTag("P1Goal"))
         {
             transform.position = new Vector3(0, 0, Random.Range(0,5));
-            xMove = 2;
-            zMove = 2;
+            xMove = speed;
+            zMove = speed;
             
             p2Score += 1;
             Debug.Log("Player 2 score!\nCurrent Score:\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score);
+            scoreBoard.text = $"{p1Score}  ||  {p2Score}";
             if (p2Score == 11)
             {
                 Debug.Log("Game Over, Player 2 won!");
                 p1Score = 0;
                 p2Score = 0;
+                winText.text = "Player 2 won!";
+                winText.enabled = true;
+                Invoke("HideWinText", 3f);
             }
         }
         else if (other.CompareTag("P2Goal"))
         {
             transform.position = new Vector3(0, 0, Random.Range(-5,0));
-            xMove = 2;
-            zMove = 2;
+            xMove = speed;
+            zMove = speed;
             
             p1Score += 1;
             Debug.Log("Player 1 score!\nCurrent Score:\nPlayer 1: " + p1Score + "\nPlayer 2: " + p2Score);
+            scoreBoard.text = $"{p1Score}  ||  {p2Score}";
             if (p1Score == 11)
             {
                 Debug.Log("Game Over, Player 1 won!");
                 p1Score = 0;
                 p2Score = 0;
+                winText.text = "Player 1 won!";
+                winText.enabled = true;
+                Invoke("HideWinText", 3f);
+                
             }
         }
+
+        if (p1Score > p2Score)
+        {
+            scoreBoard.color = Color.hotPink;
+        }
+        else if(p2Score > p1Score)
+        {
+            scoreBoard.color = Color.mediumPurple;
+        }
+        else
+        {
+            scoreBoard.color = Color.white;
+        }
+        
         
     }
 
+    void HideWinText()
+    {
+        winText.enabled = false;
+    }
     
 }

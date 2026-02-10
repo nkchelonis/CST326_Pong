@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d917b721fea6bea448b4bf9a59613956, type: 2}
+  - {fileID: 2100000, guid: 498915ae85cb73e4a8651db40b9474fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,7 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6436f35ae156acf49ae3cff34dd9a5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 20
 --- !u!54 &-3861817232588776965
 Rigidbody:
   m_ObjectHideFlags: 0
