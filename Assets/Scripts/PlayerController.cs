@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     
     
     private float maxSpeed = 10;
+    private Vector3 size;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        size = transform.localScale;
     }
     
     
@@ -33,7 +35,15 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("SpeedPower"))
+        {
+            maxSpeed += 2;
+        }
+        else if (other.CompareTag("SizePower"))
+        {
+            size = new Vector3(size.x, size.y, size.z + 1);
+            transform.localScale = size;
+        }
     }
     
 }

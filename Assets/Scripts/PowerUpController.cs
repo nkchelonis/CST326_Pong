@@ -14,4 +14,12 @@ public class PowerUpController : MonoBehaviour
         float rotateAngle = 30*Time.deltaTime;
         transform.Rotate(rotateAngle,0,0);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

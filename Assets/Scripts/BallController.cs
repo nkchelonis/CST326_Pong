@@ -13,13 +13,20 @@ public class BallController : MonoBehaviour
     public float zMove = 5f;
     private int p1Score = 0;
     private int p2Score = 0;
+    
+    //sound things
     public AudioClip pop1;
     public AudioClip pop2;
     public AudioClip pop3;
     private AudioSource audioSource;
 
+    //score things
     public TextMeshProUGUI scoreBoard;
     public TextMeshProUGUI winText;
+    
+    //power up things
+    public GameObject speedPower;
+    public GameObject sizePower;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -124,6 +131,32 @@ public class BallController : MonoBehaviour
                 winText.enabled = true;
                 Invoke("HideWinText", 3f);
             }
+            
+            //power up trigger
+            if (p1Score%3 == 0 || p2Score%3 == 0)
+            {
+                //spawn speed power up on losing side
+                if (p1Score > p2Score)
+                {
+                    Instantiate(speedPower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
+                }
+                else if (p2Score > p1Score)
+                {
+                    Instantiate(speedPower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
+                }
+            }
+            else if (p1Score % 2 == 0 || p2Score % 2 == 0)
+            {
+                //spawn size power up on losing side
+                if (p1Score > p2Score)
+                {
+                    Instantiate(sizePower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
+                }
+                else if (p2Score > p1Score)
+                {
+                    Instantiate(sizePower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
+                }
+            }
         }
         else if (other.CompareTag("P2Goal"))
         {
@@ -142,7 +175,32 @@ public class BallController : MonoBehaviour
                 winText.text = "Player 1 won!";
                 winText.enabled = true;
                 Invoke("HideWinText", 3f);
-                
+            }
+            
+            //power up trigger
+            if (p1Score%3 == 0 || p2Score%3 == 0)
+            {
+                //spawn speed power up on losing side
+                if (p1Score > p2Score)
+                {
+                    Instantiate(speedPower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
+                }
+                else if (p2Score > p1Score)
+                {
+                    Instantiate(speedPower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
+                }
+            }
+            else if (p1Score % 2 == 0 || p2Score % 2 == 0)
+            {
+                //spawn size power up on losing side
+                if (p1Score > p2Score)
+                {
+                    Instantiate(sizePower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
+                }
+                else if (p2Score > p1Score)
+                {
+                    Instantiate(sizePower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
+                }
             }
         }
 
