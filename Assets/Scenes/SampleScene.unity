@@ -662,10 +662,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -690,7 +690,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1832,6 +1832,10 @@ MonoBehaviour:
   winText: {fileID: 0}
   speedPower: {fileID: 0}
   sizePower: {fileID: 0}
+  background: {fileID: 0}
+  tieBackground: {fileID: 0}
+  p1Background: {fileID: 0}
+  p2Background: {fileID: 0}
 --- !u!54 &1776936504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2500,6 +2504,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4962645408752419638, guid: fa23efffedbc48d498bd9a2a9f2df4c4, type: 3}
     - target: {fileID: 6862848281228605639, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 1883098061}
+    - target: {fileID: 6862848281228605639, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
       propertyPath: scoreBoard
       value: 
       objectReference: {fileID: 102329974}
@@ -2507,6 +2515,18 @@ PrefabInstance:
       propertyPath: speedPower
       value: 
       objectReference: {fileID: 7703748182589512174, guid: 5d4a71b44335c8d42b2c2d21637ae560, type: 3}
+    - target: {fileID: 6862848281228605639, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
+      propertyPath: p1Background
+      value: 
+      objectReference: {fileID: 2100000, guid: 81e70a1d1e77fe94b8b7c5028ceaa10f, type: 2}
+    - target: {fileID: 6862848281228605639, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
+      propertyPath: p2Background
+      value: 
+      objectReference: {fileID: 2100000, guid: fe498673b33ab3c419f064207d0687c1, type: 2}
+    - target: {fileID: 6862848281228605639, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
+      propertyPath: tieBackground
+      value: 
+      objectReference: {fileID: 2100000, guid: 809379f825a1cb44baf582b793d76716, type: 2}
     - target: {fileID: 8385539484252893833, guid: ca6ee81971cd5174ca6b03b5986d8dc9, type: 3}
       propertyPath: m_Enabled
       value: 1

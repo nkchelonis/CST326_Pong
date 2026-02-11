@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("SizePower"))
         {
             size = new Vector3(size.x, size.y, size.z + 1);
+            if (size.z > 5)
+            {
+                size.z = 5;
+            }
             transform.localScale = size;
         }
     }
