@@ -115,30 +115,7 @@ public class BallController : MonoBehaviour
             }
             
             //power up trigger
-            if (p1Score%3 == 0 || p2Score%3 == 0)
-            {
-                //spawn speed power up on losing side
-                if (p1Score > p2Score)
-                {
-                    Instantiate(speedPower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
-                }
-                else if (p2Score > p1Score)
-                {
-                    Instantiate(speedPower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
-                }
-            }
-            else if (p1Score % 2 == 0 || p2Score % 2 == 0)
-            {
-                //spawn size power up on losing side
-                if (p1Score > p2Score)
-                {
-                    Instantiate(sizePower, new Vector3(10,0,3), Quaternion.Euler(0,0,0));
-                }
-                else if (p2Score > p1Score)
-                {
-                    Instantiate(sizePower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
-                }
-            }
+            PowerUp();
         }
         else if (other.CompareTag("P2Goal"))
         {
@@ -161,7 +138,6 @@ public class BallController : MonoBehaviour
             
             //power up trigger
             PowerUp();
-            
         }
 
         UpdateUI();
@@ -204,7 +180,7 @@ public class BallController : MonoBehaviour
 
     void PowerUp()
     {
-        if (p1Score%3 == 0 || p2Score%3 == 0)
+        if (p1Score % 3 == 0 || p2Score % 3 == 0)
         {
             //spawn speed power up on losing side
             if (p1Score > p2Score)
@@ -216,7 +192,7 @@ public class BallController : MonoBehaviour
                 Instantiate(speedPower, new Vector3(-10,0,3), Quaternion.Euler(0,0,0));
             }
         }
-        else if (p1Score % 2 == 0 || p2Score % 2 == 0)
+        else if (p1Score % 4 == 0 || p2Score % 4 == 0)
         {
             //spawn size power up on losing side
             if (p1Score > p2Score)

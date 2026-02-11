@@ -37,16 +37,18 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("SpeedPower"))
         {
-            maxSpeed += 2;
+            if (maxSpeed < 25)
+            {
+                maxSpeed += 2;
+            }
         }
         else if (other.CompareTag("SizePower"))
         {
-            size = new Vector3(size.x, size.y, size.z + 1);
-            if (size.z > 5)
+            if (size.z < 5)
             {
-                size.z = 5;
+                size = new Vector3(size.x, size.y, size.z + 1);
+                transform.localScale = size;
             }
-            transform.localScale = size;
         }
     }
     
